@@ -7,8 +7,8 @@ while Menu!=4:
     matriz3=[[],[],[]]
     matriz4=[[],[],[],[]]
     x=0
-    diagonalPositiva=1
-    diagonalNegativa=1        
+    diagonalPositiva=0
+    diagonalNegativa=0        
     if Menu==4:
         print("Programa encerrado")
         print("-"*20)
@@ -85,13 +85,20 @@ while Menu!=4:
         if Menu==1:
             if tamanho==1:
                 Determinante=matriz[0]
-            else:
-                for i in range(tamanho):
-                    diagonalPositiva=diagonalPositiva*matriz[i][i]
-                    diagonalNegativa=diagonalNegativa*matriz[i][tamanho-1-i]
+            elif tamanho==2:
+                Determinante=(matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0])
+            elif tamanho==3:
+                diagonalPositiva=(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])
+                diagonalNegativa=(matriz[2][2]*matriz[0][1]*matriz[1][0])+(matriz[0][2]*matriz[1][1]*matriz[2][0])+(matriz[1][2]*matriz[2][1]*matriz[0][0])
                 Determinante=diagonalPositiva-diagonalNegativa
+            elif tamanho==4:
+                print("yes")
+                
             print("A determinante dessa matriz é:",Determinante)
-            print("-"*20)   
+            print("-"*20)
+        if Menu==3:
+            print("yes")
+
     else:
         print("Comando inválido")
         print("-"*20)       
