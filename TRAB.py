@@ -6,6 +6,10 @@ while Menu!=4:
     matriz2=[[],[]]
     matriz3=[[],[],[]]
     matriz4=[[],[],[],[]]
+    matrizinversa1=[]
+    matrizinversa2=[[0,0],[0,0]]
+    matrizinversa3=[[0,0,0],[0,0,0],[0,0,0]]
+    matrizinversa4=[[],[],[],[]]
     x=0
     diagonalPositiva=0
     diagonalNegativa=0        
@@ -87,7 +91,7 @@ while Menu!=4:
         for i in range(tamanho):
             print(matriz[i])
         print("-"*20)              
-        if Menu==1:
+        if Menu==1 or 3:
             if tamanho==1:
                 Determinante=matriz[0]
             elif tamanho==2:
@@ -96,7 +100,7 @@ while Menu!=4:
                 diagonalPositiva=(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])
                 diagonalNegativa=(matriz[2][2]*matriz[0][1]*matriz[1][0])+(matriz[0][2]*matriz[1][1]*matriz[2][0])+(matriz[1][2]*matriz[2][1]*matriz[0][0])
                 Determinante=diagonalPositiva-diagonalNegativa
-            elif tamanho==4:
+            else:
                 diagonalPositiva1=(matriz[1][1]*matriz[2][2]*matriz[3][3])+(matriz[3][1]*matriz[1][2]*matriz[2][3])+(matriz[2][1]*matriz[3][2]*matriz[1][3])
                 diagonalNegativa1=(matriz[3][3]*matriz[1][2]*matriz[2][1])+(matriz[1][3]*matriz[2][2]*matriz[3][1])+(matriz[2][3]*matriz[3][2]*matriz[1][1])
                 Cofator1=diagonalPositiva1-diagonalNegativa1
@@ -110,11 +114,37 @@ while Menu!=4:
                 diagonalNegativa4=(matriz[2][3]*matriz[0][2]*matriz[1][1])+(matriz[0][3]*matriz[1][2]*matriz[2][1])+(matriz[1][3]*matriz[2][2]*matriz[0][1])
                 Cofator4=diagonalPositiva4-diagonalNegativa4
                 Determinante=(matriz[0][0]*Cofator1)-(matriz[1][0]*Cofator2)+(matriz[2][0]*Cofator3)-(matriz[3][0]*Cofator4)
-                
-            print("A determinante dessa matriz é:",Determinante)
-            print("-"*20)
-        if Menu==3:
-            print("yes")
+            if Menu==1:
+                print("A determinante dessa matriz é:",Determinante)
+                print("-"*20)
+            if Menu==3:
+                if tamanho==1:
+                    if matriz[0]>=0:
+                        matrizinversa1.append(1/matriz[0])
+                    else:
+                        matrizinversa1.append(-1/matriz[0])
+                    matrizinversa=matrizinversa1
+                if tamanho==2:
+                    matrizinversa2[0][0]=matriz[1][1]/Determinante
+                    matrizinversa2[0][1]=-matriz[0][1]/Determinante
+                    matrizinversa2[1][0]=-matriz[1][0]/Determinante
+                    matrizinversa2[1][1]=matriz[0][0]/Determinante
+                    matrizinversa=matrizinversa2
+                if tamanho==3:
+                    matrizinversa3[0][0]=(matriz[1][1]*matriz[2][2])-(matriz[1][2]*matriz[2][1])/Determinante
+                    matrizinversa3[1][0]=-((matriz[1][0]*matriz[2][2])-(matriz[1][2]*matriz[2][0]))/Determinante
+                    matrizinversa3[2][0]=(matriz[1][0]*matriz[2][1])-(matriz[1][1]*matriz[2][0])/Determinante
+                    matrizinversa3[0][1]=-((matriz[0][1]*matriz[2][2])-(matriz[0][2]*matriz[2][1]))/Determinante
+                    matrizinversa3[1][1]=(matriz[0][0]*matriz[2][2])-(matriz[0][2]*matriz[2][0])/Determinante
+                    matrizinversa3[2][1]=-((matriz[0][0]*matriz[2][1])-(matriz[0][1]*matriz[2][0]))/Determinante
+                    matrizinversa3[0][2]=(matriz[0][1]*matriz[1][2])-(matriz[0][2]*matriz[1][1])/Determinante
+                    matrizinversa3[1][2]=-((matriz[0][0]*matriz[1][2])-(matriz[0][2]*matriz[1][0]))/Determinante
+                    matrizinversa3[2][2]=(matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0])/Determinante
+                    matrizinversa=matrizinversa3
+                print("A matriz inversa é: ")
+                for i in range(tamanho):
+                    print(matrizinversa[i])
+                print("-"*20)
 
     else:
         print("Comando inválido")
