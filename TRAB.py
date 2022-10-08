@@ -119,51 +119,55 @@ while Menu!=4:
                 print("A determinante dessa matriz é:",Determinante)
                 print("-"*20)
             if Menu==3:
-                if tamanho==1:
-                    if matriz[0]>=0:
-                        matrizinversa1.append(1/matriz[0])
-                    else:
-                        matrizinversa1.append(-1/matriz[0])
-                    matrizinversa=matrizinversa1
-                if tamanho==2:
-                    matrizinversa2[0][0]=matriz[1][1]/Determinante
-                    matrizinversa2[0][1]=-matriz[0][1]/Determinante
-                    matrizinversa2[1][0]=-matriz[1][0]/Determinante
-                    matrizinversa2[1][1]=matriz[0][0]/Determinante
-                    matrizinversa=matrizinversa2
-                if tamanho==3:
-                    matrizinversa3[0][0]=((matriz[1][1]*matriz[2][2])-(matriz[1][2]*matriz[2][1]))/Determinante
-                    matrizinversa3[0][1]=-((matriz[0][1]*matriz[2][2])-(matriz[0][2]*matriz[2][1]))/Determinante
-                    matrizinversa3[0][2]=((matriz[0][1]*matriz[1][2])-(matriz[0][2]*matriz[1][1]))/Determinante
-                    matrizinversa3[1][0]=-((matriz[1][0]*matriz[2][2])-(matriz[1][2]*matriz[2][0]))/Determinante
-                    matrizinversa3[1][1]=((matriz[0][0]*matriz[2][2])-(matriz[0][2]*matriz[2][0]))/Determinante
-                    matrizinversa3[1][2]=-((matriz[0][0]*matriz[1][2])-(matriz[0][2]*matriz[1][0]))/Determinante
-                    matrizinversa3[2][0]=((matriz[1][0]*matriz[2][1])-(matriz[1][1]*matriz[2][0]))/Determinante
-                    matrizinversa3[2][1]=-((matriz[0][0]*matriz[2][1])-(matriz[0][1]*matriz[2][0]))/Determinante
-                    matrizinversa3[2][2]=((matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0]))/Determinante
-                    matrizinversa=matrizinversa3
-                if tamanho==4:
-                    matrizinversa4[0][0]=((matriz[3][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][1])+(matriz[1][3]*matriz[2][2]*matriz[3][1])+(matriz[2][3]*matriz[3][2]*matriz[1][1]))/Determinante
-                    matrizinversa4[1][0]=-((matriz[3][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][0])+(matriz[1][3]*matriz[2][2]*matriz[3][0])+(matriz[2][3]*matriz[3][2]*matriz[1][0]))/Determinante
-                    matrizinversa4[2][0]=((matriz[3][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[1][3])-(matriz[3][3]*matriz[1][1]*matriz[2][0])+(matriz[1][3]*matriz[2][1]*matriz[3][0])+(matriz[2][3]*matriz[3][1]*matriz[1][0]))/Determinante
-                    matrizinversa4[3][0]=-((matriz[3][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[1][2])-(matriz[3][2]*matriz[1][1]*matriz[2][0])+(matriz[1][2]*matriz[2][1]*matriz[3][0])+(matriz[2][2]*matriz[3][1]*matriz[1][0]))/Determinante
-                    matrizinversa4[0][1]=-((matriz[3][1]*matriz[0][2]*matriz[2][3])+(matriz[0][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][1])+(matriz[0][3]*matriz[2][2]*matriz[3][1])+(matriz[2][3]*matriz[3][2]*matriz[0][1]))/Determinante
-                    matrizinversa4[1][1]=((matriz[3][0]*matriz[0][2]*matriz[2][3])+(matriz[0][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][0])+(matriz[0][3]*matriz[2][2]*matriz[3][0])+(matriz[2][3]*matriz[3][2]*matriz[0][0]))/Determinante
-                    matrizinversa4[2][1]=-((matriz[3][0]*matriz[0][1]*matriz[2][3])+(matriz[0][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[2][0])+(matriz[0][3]*matriz[2][1]*matriz[3][0])+(matriz[2][3]*matriz[3][1]*matriz[0][0]))/Determinante
-                    matrizinversa4[3][1]=((matriz[3][0]*matriz[0][1]*matriz[2][2])+(matriz[0][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[2][0])+(matriz[0][2]*matriz[2][1]*matriz[3][0])+(matriz[2][2]*matriz[3][1]*matriz[0][0]))/Determinante
-                    matrizinversa4[0][2]=((matriz[3][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[3][3])+(matriz[1][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][1])+(matriz[0][3]*matriz[1][2]*matriz[3][1])+(matriz[1][3]*matriz[3][2]*matriz[0][1]))/Determinante
-                    matrizinversa4[1][2]=-((matriz[3][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[3][3])+(matriz[1][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][0])+(matriz[0][3]*matriz[1][2]*matriz[3][0])+(matriz[1][3]*matriz[3][2]*matriz[0][0]))/Determinante
-                    matrizinversa4[2][2]=((matriz[3][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[3][3])+(matriz[1][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[1][0])+(matriz[0][3]*matriz[1][1]*matriz[3][0])+(matriz[1][3]*matriz[3][1]*matriz[0][0]))/Determinante
-                    matrizinversa4[3][2]=-((matriz[3][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[3][2])+(matriz[1][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[1][0])+(matriz[0][2]*matriz[1][1]*matriz[3][0])+(matriz[1][2]*matriz[3][1]*matriz[0][0]))/Determinante
-                    matrizinversa4[0][3]=-((matriz[2][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][1])+(matriz[0][3]*matriz[1][2]*matriz[2][1])+(matriz[1][3]*matriz[2][2]*matriz[0][1]))/Determinante
-                    matrizinversa4[1][3]=((matriz[2][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][0])+(matriz[0][3]*matriz[1][2]*matriz[2][0])+(matriz[1][3]*matriz[2][2]*matriz[0][0]))/Determinante
-                    matrizinversa4[2][3]=-((matriz[2][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[0][3])-(matriz[2][3]*matriz[0][1]*matriz[1][0])+(matriz[0][3]*matriz[1][1]*matriz[2][0])+(matriz[1][3]*matriz[2][1]*matriz[0][0]))/Determinante
-                    matrizinversa4[3][3]=((matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])-(matriz[2][2]*matriz[0][1]*matriz[1][0])+(matriz[0][2]*matriz[1][1]*matriz[2][0])+(matriz[1][2]*matriz[2][1]*matriz[0][0]))/Determinante
-                    matrizinversa=matrizinversa4
-                print("A matriz inversa é: ")
-                for i in range(tamanho):
-                    print(matrizinversa[i])
-                print("-"*20)
+                if Determinante==0:
+                    print("Essa matriz não tem inversa")
+                    print("-"*20)
+                else:
+                    if tamanho==1:
+                        if matriz[0]>=0:
+                            matrizinversa1.append(1/matriz[0])
+                        else:
+                            matrizinversa1.append(-1/matriz[0])
+                        matrizinversa=matrizinversa1
+                    if tamanho==2:
+                        matrizinversa2[0][0]=matriz[1][1]/Determinante
+                        matrizinversa2[0][1]=-matriz[0][1]/Determinante
+                        matrizinversa2[1][0]=-matriz[1][0]/Determinante
+                        matrizinversa2[1][1]=matriz[0][0]/Determinante
+                        matrizinversa=matrizinversa2
+                    if tamanho==3:
+                        matrizinversa3[0][0]=((matriz[1][1]*matriz[2][2])-(matriz[1][2]*matriz[2][1]))/Determinante
+                        matrizinversa3[0][1]=-((matriz[0][1]*matriz[2][2])-(matriz[0][2]*matriz[2][1]))/Determinante
+                        matrizinversa3[0][2]=((matriz[0][1]*matriz[1][2])-(matriz[0][2]*matriz[1][1]))/Determinante
+                        matrizinversa3[1][0]=-((matriz[1][0]*matriz[2][2])-(matriz[1][2]*matriz[2][0]))/Determinante
+                        matrizinversa3[1][1]=((matriz[0][0]*matriz[2][2])-(matriz[0][2]*matriz[2][0]))/Determinante
+                        matrizinversa3[1][2]=-((matriz[0][0]*matriz[1][2])-(matriz[0][2]*matriz[1][0]))/Determinante
+                        matrizinversa3[2][0]=((matriz[1][0]*matriz[2][1])-(matriz[1][1]*matriz[2][0]))/Determinante
+                        matrizinversa3[2][1]=-((matriz[0][0]*matriz[2][1])-(matriz[0][1]*matriz[2][0]))/Determinante
+                        matrizinversa3[2][2]=((matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0]))/Determinante
+                        matrizinversa=matrizinversa3
+                    if tamanho==4:
+                        matrizinversa4[0][0]=((matriz[3][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[1][1]))/Determinante
+                        matrizinversa4[1][0]=-((matriz[3][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[1][0]))/Determinante
+                        matrizinversa4[2][0]=((matriz[3][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[1][3])-(matriz[3][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[1][0]))/Determinante
+                        matrizinversa4[3][0]=-((matriz[3][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[1][2])-(matriz[3][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[1][0]))/Determinante
+                        matrizinversa4[0][1]=-((matriz[3][1]*matriz[0][2]*matriz[2][3])+(matriz[0][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][1])-(matriz[0][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[0][1]))/Determinante
+                        matrizinversa4[1][1]=((matriz[3][0]*matriz[0][2]*matriz[2][3])+(matriz[0][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][0])-(matriz[0][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[0][0]))/Determinante
+                        matrizinversa4[2][1]=-((matriz[3][0]*matriz[0][1]*matriz[2][3])+(matriz[0][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[2][0])-(matriz[0][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[0][0]))/Determinante
+                        matrizinversa4[3][1]=((matriz[3][0]*matriz[0][1]*matriz[2][2])+(matriz[0][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[2][0])-(matriz[0][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[0][0]))/Determinante
+                        matrizinversa4[0][2]=((matriz[3][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[3][3])+(matriz[1][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[3][1])-(matriz[1][3]*matriz[3][2]*matriz[0][1]))/Determinante
+                        matrizinversa4[1][2]=-((matriz[3][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[3][3])+(matriz[1][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[3][0])-(matriz[1][3]*matriz[3][2]*matriz[0][0]))/Determinante
+                        matrizinversa4[2][2]=((matriz[3][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[3][3])+(matriz[1][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[3][0])-(matriz[1][3]*matriz[3][1]*matriz[0][0]))/Determinante
+                        matrizinversa4[3][2]=-((matriz[3][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[3][2])+(matriz[1][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[3][0])-(matriz[1][2]*matriz[3][1]*matriz[0][0]))/Determinante
+                        matrizinversa4[0][3]=-((matriz[2][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[0][1]))/Determinante
+                        matrizinversa4[1][3]=((matriz[2][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[0][0]))/Determinante
+                        matrizinversa4[2][3]=-((matriz[2][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[0][3])-(matriz[2][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[0][0]))/Determinante
+                        matrizinversa4[3][3]=((matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])-(matriz[2][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[0][0]))/Determinante
+                        matrizinversa=matrizinversa4
+                    print("A matriz inversa é: ")
+                    for i in range(tamanho):
+                        print(matrizinversa[i])
+                    print("-"*20)
     elif Menu==2:
         print("yes")
     else:
