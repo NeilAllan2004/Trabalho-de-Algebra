@@ -1,4 +1,3 @@
-#Aqui escrevemos as funções que serão utilizadas para descobrir o DETERMINANTE
 def Determinante2x2(matriz,Determinante):
     Determinante=(matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0])
     return Determinante
@@ -22,7 +21,6 @@ def Determinante4x4(matriz,Determinante):
     Cofator4=diagonalPositiva4-diagonalNegativa4
     Determinante=(matriz[0][0]*Cofator1)-(matriz[1][0]*Cofator2)+(matriz[2][0]*Cofator3)-(matriz[3][0]*Cofator4)
     return Determinante
-#Aqui escrevemos as funções que serão utilizadas para descobrir a MATRIZ INVERSA
 def MatrizInversa1x1(matrizinversa1,matriz):
     if matriz[0]>=0:
         matrizinversa1.append(1/matriz[0])
@@ -30,39 +28,39 @@ def MatrizInversa1x1(matrizinversa1,matriz):
         matrizinversa1.append(-1/matriz[0])
     return matrizinversa1
 def MatrizInversa2x2(matrizinversa2,matriz,Determinante):
-    matrizinversa2[0][0]=matriz[1][1]/Determinante
-    matrizinversa2[0][1]=-matriz[0][1]/Determinante
-    matrizinversa2[1][0]=-matriz[1][0]/Determinante
-    matrizinversa2[1][1]=matriz[0][0]/Determinante
+    matrizinversa2[0][0]=round(matriz[1][1]/Determinante,2)
+    matrizinversa2[0][1]=round(-matriz[0][1]/Determinante,2)
+    matrizinversa2[1][0]=round(-matriz[1][0]/Determinante,2)
+    matrizinversa2[1][1]=round(matriz[0][0]/Determinante,2)
     return matrizinversa2
 def MatrizInversa3x3(matrizinversa3,matriz,Determinante):
-    matrizinversa3[0][0]=((matriz[1][1]*matriz[2][2])-(matriz[1][2]*matriz[2][1]))/Determinante
-    matrizinversa3[0][1]=-((matriz[0][1]*matriz[2][2])-(matriz[0][2]*matriz[2][1]))/Determinante
-    matrizinversa3[0][2]=((matriz[0][1]*matriz[1][2])-(matriz[0][2]*matriz[1][1]))/Determinante
-    matrizinversa3[1][0]=-((matriz[1][0]*matriz[2][2])-(matriz[1][2]*matriz[2][0]))/Determinante
-    matrizinversa3[1][1]=((matriz[0][0]*matriz[2][2])-(matriz[0][2]*matriz[2][0]))/Determinante
-    matrizinversa3[1][2]=-((matriz[0][0]*matriz[1][2])-(matriz[0][2]*matriz[1][0]))/Determinante
-    matrizinversa3[2][0]=((matriz[1][0]*matriz[2][1])-(matriz[1][1]*matriz[2][0]))/Determinante
-    matrizinversa3[2][1]=-((matriz[0][0]*matriz[2][1])-(matriz[0][1]*matriz[2][0]))/Determinante
-    matrizinversa3[2][2]=((matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0]))/Determinante
+    matrizinversa3[0][0]=round(((matriz[1][1]*matriz[2][2])-(matriz[1][2]*matriz[2][1]))/Determinante,2)
+    matrizinversa3[0][1]=round(-((matriz[0][1]*matriz[2][2])-(matriz[0][2]*matriz[2][1]))/Determinante,2)
+    matrizinversa3[0][2]=round(((matriz[0][1]*matriz[1][2])-(matriz[0][2]*matriz[1][1]))/Determinante,2)
+    matrizinversa3[1][0]=round(-((matriz[1][0]*matriz[2][2])-(matriz[1][2]*matriz[2][0]))/Determinante,2)
+    matrizinversa3[1][1]=round(((matriz[0][0]*matriz[2][2])-(matriz[0][2]*matriz[2][0]))/Determinante,2)
+    matrizinversa3[1][2]=round(-((matriz[0][0]*matriz[1][2])-(matriz[0][2]*matriz[1][0]))/Determinante,2)
+    matrizinversa3[2][0]=round(((matriz[1][0]*matriz[2][1])-(matriz[1][1]*matriz[2][0]))/Determinante,2)
+    matrizinversa3[2][1]=round(-((matriz[0][0]*matriz[2][1])-(matriz[0][1]*matriz[2][0]))/Determinante,2)
+    matrizinversa3[2][2]=round(((matriz[0][0]*matriz[1][1])-(matriz[0][1]*matriz[1][0]))/Determinante,2)
     return matrizinversa3
 def MatrizInversa4x4(matrizinversa4,matriz,Determinante):
-    matrizinversa4[0][0]=((matriz[3][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[1][1]))/Determinante
-    matrizinversa4[1][0]=-((matriz[3][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[1][0]))/Determinante
-    matrizinversa4[2][0]=((matriz[3][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[1][3])-(matriz[3][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[1][0]))/Determinante
-    matrizinversa4[3][0]=-((matriz[3][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[1][2])-(matriz[3][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[1][0]))/Determinante
-    matrizinversa4[0][1]=-((matriz[3][1]*matriz[0][2]*matriz[2][3])+(matriz[0][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][1])-(matriz[0][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[0][1]))/Determinante
-    matrizinversa4[1][1]=((matriz[3][0]*matriz[0][2]*matriz[2][3])+(matriz[0][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][0])-(matriz[0][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[0][0]))/Determinante
-    matrizinversa4[2][1]=-((matriz[3][0]*matriz[0][1]*matriz[2][3])+(matriz[0][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[2][0])-(matriz[0][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[0][0]))/Determinante
-    matrizinversa4[3][1]=((matriz[3][0]*matriz[0][1]*matriz[2][2])+(matriz[0][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[2][0])-(matriz[0][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[0][0]))/Determinante
-    matrizinversa4[0][2]=((matriz[3][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[3][3])+(matriz[1][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[3][1])-(matriz[1][3]*matriz[3][2]*matriz[0][1]))/Determinante
-    matrizinversa4[1][2]=-((matriz[3][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[3][3])+(matriz[1][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[3][0])-(matriz[1][3]*matriz[3][2]*matriz[0][0]))/Determinante
-    matrizinversa4[2][2]=((matriz[3][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[3][3])+(matriz[1][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[3][0])-(matriz[1][3]*matriz[3][1]*matriz[0][0]))/Determinante
-    matrizinversa4[3][2]=-((matriz[3][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[3][2])+(matriz[1][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[3][0])-(matriz[1][2]*matriz[3][1]*matriz[0][0]))/Determinante
-    matrizinversa4[0][3]=-((matriz[2][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[0][1]))/Determinante
-    matrizinversa4[1][3]=((matriz[2][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[0][0]))/Determinante
-    matrizinversa4[2][3]=-((matriz[2][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[0][3])-(matriz[2][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[0][0]))/Determinante
-    matrizinversa4[3][3]=((matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])-(matriz[2][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[0][0]))/Determinante
+    matrizinversa4[0][0]=round(((matriz[3][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[1][1]))/Determinante,2)
+    matrizinversa4[1][0]=round(-((matriz[3][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[1][3])-(matriz[3][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[1][0]))/Determinante,2)
+    matrizinversa4[2][0]=round(((matriz[3][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[1][3])-(matriz[3][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[1][0]))/Determinante,2)
+    matrizinversa4[3][0]=round(-((matriz[3][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[1][2])-(matriz[3][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[1][0]))/Determinante,2)
+    matrizinversa4[0][1]=round(-((matriz[3][1]*matriz[0][2]*matriz[2][3])+(matriz[0][1]*matriz[2][2]*matriz[3][3])+(matriz[2][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][1])-(matriz[0][3]*matriz[2][2]*matriz[3][1])-(matriz[2][3]*matriz[3][2]*matriz[0][1]))/Determinante,2)
+    matrizinversa4[1][1]=round(((matriz[3][0]*matriz[0][2]*matriz[2][3])+(matriz[0][0]*matriz[2][2]*matriz[3][3])+(matriz[2][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[2][0])-(matriz[0][3]*matriz[2][2]*matriz[3][0])-(matriz[2][3]*matriz[3][2]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[2][1]=round(-((matriz[3][0]*matriz[0][1]*matriz[2][3])+(matriz[0][0]*matriz[2][1]*matriz[3][3])+(matriz[2][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[2][0])-(matriz[0][3]*matriz[2][1]*matriz[3][0])-(matriz[2][3]*matriz[3][1]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[3][1]=round(((matriz[3][0]*matriz[0][1]*matriz[2][2])+(matriz[0][0]*matriz[2][1]*matriz[3][2])+(matriz[2][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[2][0])-(matriz[0][2]*matriz[2][1]*matriz[3][0])-(matriz[2][2]*matriz[3][1]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[0][2]=round(((matriz[3][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[3][3])+(matriz[1][1]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[3][1])-(matriz[1][3]*matriz[3][2]*matriz[0][1]))/Determinante,2)
+    matrizinversa4[1][2]=round(-((matriz[3][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[3][3])+(matriz[1][0]*matriz[3][2]*matriz[0][3])-(matriz[3][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[3][0])-(matriz[1][3]*matriz[3][2]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[2][2]=round(((matriz[3][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[3][3])+(matriz[1][0]*matriz[3][1]*matriz[0][3])-(matriz[3][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[3][0])-(matriz[1][3]*matriz[3][1]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[3][2]=round(-((matriz[3][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[3][2])+(matriz[1][0]*matriz[3][1]*matriz[0][2])-(matriz[3][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[3][0])-(matriz[1][2]*matriz[3][1]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[0][3]=round(-((matriz[2][1]*matriz[0][2]*matriz[1][3])+(matriz[0][1]*matriz[1][2]*matriz[2][3])+(matriz[1][1]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][1])-(matriz[0][3]*matriz[1][2]*matriz[2][1])-(matriz[1][3]*matriz[2][2]*matriz[0][1]))/Determinante,2)
+    matrizinversa4[1][3]=round(((matriz[2][0]*matriz[0][2]*matriz[1][3])+(matriz[0][0]*matriz[1][2]*matriz[2][3])+(matriz[1][0]*matriz[2][2]*matriz[0][3])-(matriz[2][3]*matriz[0][2]*matriz[1][0])-(matriz[0][3]*matriz[1][2]*matriz[2][0])-(matriz[1][3]*matriz[2][2]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[2][3]=round(-((matriz[2][0]*matriz[0][1]*matriz[1][3])+(matriz[0][0]*matriz[1][1]*matriz[2][3])+(matriz[1][0]*matriz[2][1]*matriz[0][3])-(matriz[2][3]*matriz[0][1]*matriz[1][0])-(matriz[0][3]*matriz[1][1]*matriz[2][0])-(matriz[1][3]*matriz[2][1]*matriz[0][0]))/Determinante,2)
+    matrizinversa4[3][3]=round(((matriz[2][0]*matriz[0][1]*matriz[1][2])+(matriz[0][0]*matriz[1][1]*matriz[2][2])+(matriz[1][0]*matriz[2][1]*matriz[0][2])-(matriz[2][2]*matriz[0][1]*matriz[1][0])-(matriz[0][2]*matriz[1][1]*matriz[2][0])-(matriz[1][2]*matriz[2][1]*matriz[0][0]))/Determinante,2)
     return matrizinversa4      
 Menu=0
 while Menu!=4:
@@ -72,10 +70,8 @@ while Menu!=4:
     matriz2=[[],[]]
     matriz3=[[],[],[]]
     matriz4=[[],[],[],[]]
-    vetorA = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    a = 0
-    vetorB = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    b = 0
+    vetorA=[[],[],[],[]]
+    vetorB=[[],[],[],[]]
     matriz_inversa =[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
     matriz_mudança_base =[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
     matrizinversa1=[]
@@ -83,7 +79,9 @@ while Menu!=4:
     matrizinversa3=[[0,0,0],[0,0,0],[0,0,0]]
     matrizinversa4=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
     x=0
-    Determinante=0        
+    Determinante=0
+    DeterminanteA=0
+    DeterminanteB=0        
     if Menu==4:
         print("Programa encerrado")
         print("-"*20)
@@ -136,17 +134,15 @@ while Menu!=4:
                 matriz=matriz1
             elif tamanho==2:
                 for i in range (2):
-                    for j in range(2):
-                        print("Linha",i+1,"Coluna:",j+1)               
-                        v=int(input("Digite o valor para essa posição: "))
+                    for j in range(2):         
+                        v=int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna: "))
                         print("***")
                         matriz2[i].append(v)    
                 matriz=matriz2                                                    
             elif tamanho==3:
                 for i in range (3):
                     for j in range(3):
-                        print("Linha",i+1,"Coluna:",j+1)
-                        v=int(input("Digite o valor para essa posição: "))
+                        v=int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna: "))
                         print("***")
                         matriz3[i].append(v)      
                 matriz=matriz3                                
@@ -192,161 +188,75 @@ while Menu!=4:
                         print(matrizinversa[i])
                     print("-"*20)
     elif Menu==2:
-          
-        Rn=(int(input("Digite o valor de n do Rn: ")))
-
-        if Rn == 0:
-            print("Valor inválido!")
-        elif Rn == 1: 
-            while a == 0:
-                 a=(int(input("Digite o valor da base A: ")))
-            vetorA[0][0] = a
-            while b == 0:
-                b=(int(input("Digite o valor da base B: ")))
-            vetorB[0][0] = b
-            if vetorB[0][0]>=0:
-                matriz_inversa[0][0] = (1 / vetorB[0][0])
+        while x==0:          
+            Rn=(int(input("Digite o valor de n do Rn: ")))
+            print("-"*20)
+            if Rn>=1 and Rn<=4:
+                x=1
             else:
-                matriz_inversa[0][0] = (-1 / vetorB[0][0])
-
-                matriz_mudança_base[0][0] = (matriz_inversa[0][0]*vetorA[0][0])
-        
-            print(matriz_mudança_base[0][0])
-        elif Rn == 2:
+                print("Valor inválido")
+                print("-"*20)              
+        else:
             for i in range(0,Rn):
                 for j in range(0,Rn):
-                    a=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base A: ")))
-                    vetorA[i][j] = a
-                    a = 0
-                    b=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base B: ")))
-                    vetorB[i][j] = b
-                    b = 0
-            DeterminanteA=(vetorA[0][0]*vetorA[1][1])-(vetorA[0][1]*vetorA[1][0])
-            DeterminanteB=(vetorB[0][0]*vetorB[1][1])-(vetorB[0][1]*vetorB[1][0])
-            if (DeterminanteA or DeterminanteB) == 0:
-                print("Algum dos dois vetores não é uma base linear!")
-            else:    
-                matriz_inversa[0][0]=round(vetorB[1][1]/DeterminanteB,2)
-                matriz_inversa[0][1]=round(-vetorB[0][1]/DeterminanteB,2)
-                matriz_inversa[1][0]=round(-vetorB[1][0]/DeterminanteB,2)
-                matriz_inversa[1][1]=round(vetorB[0][0]/DeterminanteB,2)
-    
-            matriz_mudança_base[0][0]= round((matriz_inversa[0][0]*vetorA[0][0]) + (matriz_inversa[0][1]*vetorA[1][0]),2)
-            matriz_mudança_base[0][1]= round((matriz_inversa[0][0]*vetorA[0][1]) + (matriz_inversa[0][1]*vetorA[1][1]),2)
-            matriz_mudança_base[1][0]= round((matriz_inversa[1][0]*vetorA[0][0]) + (matriz_inversa[1][1]*vetorA[1][0]),2)
-            matriz_mudança_base[1][1]= round((matriz_inversa[1][0]*vetorA[0][1]) + (matriz_inversa[1][1]*vetorA[1][1]),2)
-        elif Rn == 3:
-            for i in range(0,Rn):
-                for j in range(0,Rn):
-                    a=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base A: ")))
-                    vetorA[i][j] = a
-                    a = 0
-                    b=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base B: ")))
-                    vetorB[i][j] = b
-                    b = 0
-            diagonalPositivaA=(vetorA[0][0]*vetorA[1][1]*vetorA[2][2])+(vetorA[2][0]*vetorA[0][1]*vetorA[1][2])+(vetorA[1][0]*vetorA[2][1]*vetorA[0][2])
-            diagonalNegativaA=(vetorA[2][2]*vetorA[0][1]*vetorA[1][0])+(vetorA[0][2]*vetorA[1][1]*vetorA[2][0])+(vetorA[1][2]*vetorA[2][1]*vetorA[0][0])
-            DeterminanteA=diagonalPositivaA-diagonalNegativaA
-            diagonalPositivaB=(vetorB[0][0]*vetorB[1][1]*vetorB[2][2])+(vetorB[2][0]*vetorB[0][1]*vetorB[1][2])+(vetorB[1][0]*vetorB[2][1]*vetorB[0][2])
-            diagonalNegativaB=(vetorB[2][2]*vetorB[0][1]*vetorB[1][0])+(vetorB[0][2]*vetorB[1][1]*vetorB[2][0])+(vetorB[1][2]*vetorB[2][1]*vetorB[0][0])
-            DeterminanteB=diagonalPositivaB-diagonalNegativaB
-            if (DeterminanteA or DeterminanteB) == 0:
-                print("Algum dos dois vetores não é uma base linear!")
-            else:
-                matriz_inversa[0][0]=round(((vetorB[1][1]*vetorB[2][2])-(vetorB[1][2]*vetorB[2][1]))/DeterminanteB,2)
-                matriz_inversa[0][1]=round(-((vetorB[0][1]*vetorB[2][2])-(vetorB[0][2]*vetorB[2][1]))/DeterminanteB,2)
-                matriz_inversa[0][2]=round(((vetorB[0][1]*vetorB[1][2])-(vetorB[0][2]*vetorB[1][1]))/DeterminanteB,2)
-                matriz_inversa[1][0]=round(-((vetorB[1][0]*vetorB[2][2])-(vetorB[1][2]*vetorB[2][0]))/DeterminanteB,2)
-                matriz_inversa[1][1]=round(((vetorB[0][0]*vetorB[2][2])-(vetorB[0][2]*vetorB[2][0]))/DeterminanteB,2)
-                matriz_inversa[1][2]=round(-((vetorB[0][0]*vetorB[1][2])-(vetorB[0][2]*vetorB[1][0]))/DeterminanteB,2)
-                matriz_inversa[2][0]=round(((vetorB[1][0]*vetorB[2][1])-(vetorB[1][1]*vetorB[2][0]))/DeterminanteB,2)
-                matriz_inversa[2][1]=round(-((vetorB[0][0]*vetorB[2][1])-(vetorB[0][1]*vetorB[2][0]))/DeterminanteB,2)
-                matriz_inversa[2][2]=round(((vetorB[0][0]*vetorB[1][1])-(vetorB[0][1]*vetorB[1][0]))/DeterminanteB,2)
-            matriz_mudança_base[0][0]= round((matriz_inversa[0][0]*vetorA[0][0]) + (matriz_inversa[0][1]*vetorA[1][0]) + (matriz_inversa[0][2]*vetorA[2][0]),2)
-            matriz_mudança_base[0][1]= round((matriz_inversa[0][0]*vetorA[0][1]) + (matriz_inversa[0][1]*vetorA[1][1]) + (matriz_inversa[0][2]*vetorA[2][1]),2)
-            matriz_mudança_base[0][2]= round((matriz_inversa[0][0]*vetorA[0][2]) + (matriz_inversa[0][1]*vetorA[1][2]) + (matriz_inversa[0][2]*vetorA[2][2]),2)
-            matriz_mudança_base[1][0]= round((matriz_inversa[1][0]*vetorA[0][0]) + (matriz_inversa[1][1]*vetorA[1][0]) + (matriz_inversa[1][2]*vetorA[2][0]),2)
-            matriz_mudança_base[1][1]= round((matriz_inversa[1][0]*vetorA[0][1]) + (matriz_inversa[1][1]*vetorA[1][1]) + (matriz_inversa[1][2]*vetorA[2][1]),2)
-            matriz_mudança_base[1][2]= round((matriz_inversa[1][0]*vetorA[0][2]) + (matriz_inversa[1][1]*vetorA[1][2]) + (matriz_inversa[1][2]*vetorA[2][2]),2)
-            matriz_mudança_base[2][0]= round((matriz_inversa[2][0]*vetorA[0][0]) + (matriz_inversa[2][1]*vetorA[1][0]) + (matriz_inversa[2][2]*vetorA[2][0]),2)    
-            matriz_mudança_base[2][1]= round((matriz_inversa[2][0]*vetorA[0][1]) + (matriz_inversa[2][1]*vetorA[1][1]) + (matriz_inversa[2][2]*vetorA[2][1]),2)    
-            matriz_mudança_base[2][2]= round((matriz_inversa[2][0]*vetorA[0][2]) + (matriz_inversa[2][1]*vetorA[1][2]) + (matriz_inversa[2][2]*vetorA[2][2]),2)    
-        elif Rn == 4:
-            for i in range(0,Rn):
-                for j in range(0,Rn):
-                    a=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base A: ")))
-                    vetorA[i][j] = a
-                    a = 0
-                    b=(int(input(f"Digite o valor da {j + 1}ª linha e {i + 1}ª coluna da base B: ")))
-                    vetorB[i][j] = b
-                    b = 0 
-            diagonalPositivaA1=(vetorA[1][1]*vetorA[2][2]*vetorA[3][3])+(vetorA[3][1]*vetorA[1][2]*vetorA[2][3])+(vetorA[2][1]*vetorA[3][2]*vetorA[1][3])
-            diagonalNegativaA1=(vetorA[3][3]*vetorA[1][2]*vetorA[2][1])+(vetorA[1][3]*vetorA[2][2]*vetorA[3][1])+(vetorA[2][3]*vetorA[3][2]*vetorA[1][1])
-            CofatorA1=diagonalPositivaA1-diagonalNegativaA1
-            diagonalPositivaA2=(vetorA[0][1]*vetorA[2][2]*vetorA[3][3])+(vetorA[3][1]*vetorA[0][2]*vetorA[2][3])+(vetorA[2][1]*vetorA[3][2]*vetorA[0][3])
-            diagonalNegativaA2=(vetorA[3][3]*vetorA[0][2]*vetorA[2][1])+(vetorA[0][3]*vetorA[2][2]*vetorA[3][1])+(vetorA[2][3]*vetorA[3][2]*vetorA[0][1])
-            CofatorA2=diagonalPositivaA2-diagonalNegativaA2
-            diagonalPositivaA3=(vetorA[0][1]*vetorA[1][2]*vetorA[3][3])+(vetorA[3][1]*vetorA[0][2]*vetorA[1][3])+(vetorA[1][1]*vetorA[3][2]*vetorA[0][3])
-            diagonalNegativaA3=(vetorA[3][3]*vetorA[0][2]*vetorA[1][1])+(vetorA[0][3]*vetorA[1][2]*vetorA[3][1])+(vetorA[1][3]*vetorA[3][2]*vetorA[0][1])
-            CofatorA3=diagonalPositivaA3-diagonalNegativaA3
-            diagonalPositivaA4=(vetorA[0][1]*vetorA[1][2]*vetorA[2][3])+(vetorA[2][1]*vetorA[0][2]*vetorA[1][3])+(vetorA[1][1]*vetorA[2][2]*vetorA[0][3])
-            diagonalNegativaA4=(vetorA[2][3]*vetorA[0][2]*vetorA[1][1])+(vetorA[0][3]*vetorA[1][2]*vetorA[2][1])+(vetorA[1][3]*vetorA[2][2]*vetorA[0][1])
-            CofatorA4=diagonalPositivaA4-diagonalNegativaA4
-            DeterminanteA=(vetorA[0][0]*CofatorA1)-(vetorA[1][0]*CofatorA2)+(vetorA[2][0]*CofatorA3)-(vetorA[3][0]*CofatorA4)
-            diagonalPositivaB1=(vetorB[1][1]*vetorB[2][2]*vetorB[3][3])+(vetorB[3][1]*vetorB[1][2]*vetorB[2][3])+(vetorB[2][1]*vetorB[3][2]*vetorB[1][3])
-            diagonalNegativaB1=(vetorB[3][3]*vetorB[1][2]*vetorB[2][1])+(vetorB[1][3]*vetorB[2][2]*vetorB[3][1])+(vetorB[2][3]*vetorB[3][2]*vetorB[1][1])
-            CofatorB1=diagonalPositivaB1-diagonalNegativaB1
-            diagonalPositivaB2=(vetorB[0][1]*vetorB[2][2]*vetorB[3][3])+(vetorB[3][1]*vetorB[0][2]*vetorB[2][3])+(vetorB[2][1]*vetorB[3][2]*vetorB[0][3])
-            diagonalNegativaB2=(vetorB[3][3]*vetorB[0][2]*vetorB[2][1])+(vetorB[0][3]*vetorB[2][2]*vetorB[3][1])+(vetorB[2][3]*vetorB[3][2]*vetorB[0][1])
-            CofatorB2=diagonalPositivaB2-diagonalNegativaB2
-            diagonalPositivaB3=(vetorB[0][1]*vetorB[1][2]*vetorB[3][3])+(vetorB[3][1]*vetorB[0][2]*vetorB[1][3])+(vetorB[1][1]*vetorB[3][2]*vetorB[0][3])
-            diagonalNegativaB3=(vetorB[3][3]*vetorB[0][2]*vetorB[1][1])+(vetorB[0][3]*vetorB[1][2]*vetorB[3][1])+(vetorB[1][3]*vetorB[3][2]*vetorB[0][1])
-            CofatorB3=diagonalPositivaB3-diagonalNegativaB3
-            diagonalPositivaB4=(vetorB[0][1]*vetorB[1][2]*vetorB[2][3])+(vetorB[2][1]*vetorB[0][2]*vetorB[1][3])+(vetorB[1][1]*vetorB[2][2]*vetorB[0][3])
-            diagonalNegativaB4=(vetorB[2][3]*vetorB[0][2]*vetorB[1][1])+(vetorB[0][3]*vetorB[1][2]*vetorB[2][1])+(vetorB[1][3]*vetorB[2][2]*vetorB[0][1])
-            CofatorB4=diagonalPositivaB4-diagonalNegativaB4
-            DeterminanteB=(vetorB[0][0]*CofatorB1)-(vetorB[1][0]*CofatorB2)+(vetorB[2][0]*CofatorB3)-(vetorB[3][0]*CofatorB4)
-            if (DeterminanteA or DeterminanteB) == 0:
-                print("Algum dos dois vetores não é uma base linear!")
-            else:
-                matriz_inversa[0][0]=round(((vetorB[3][1]*vetorB[1][2]*vetorB[2][3])+(vetorB[1][1]*vetorB[2][2]*vetorB[3][3])+(vetorB[2][1]*vetorB[3][2]*vetorB[1][3])-(vetorB[3][3]*vetorB[1][2]*vetorB[2][1])-(vetorB[1][3]*vetorB[2][2]*vetorB[3][1])-(vetorB[2][3]*vetorB[3][2]*vetorB[1][1]))/DeterminanteB,2)
-                matriz_inversa[1][0]=-round(((vetorB[3][0]*vetorB[1][2]*vetorB[2][3])+(vetorB[1][0]*vetorB[2][2]*vetorB[3][3])+(vetorB[2][0]*vetorB[3][2]*vetorB[1][3])-(vetorB[3][3]*vetorB[1][2]*vetorB[2][0])-(vetorB[1][3]*vetorB[2][2]*vetorB[3][0])-(vetorB[2][3]*vetorB[3][2]*vetorB[1][0]))/DeterminanteB,2)
-                matriz_inversa[2][0]=round(((vetorB[3][0]*vetorB[1][1]*vetorB[2][3])+(vetorB[1][0]*vetorB[2][1]*vetorB[3][3])+(vetorB[2][0]*vetorB[3][1]*vetorB[1][3])-(vetorB[3][3]*vetorB[1][1]*vetorB[2][0])-(vetorB[1][3]*vetorB[2][1]*vetorB[3][0])-(vetorB[2][3]*vetorB[3][1]*vetorB[1][0]))/DeterminanteB,2)
-                matriz_inversa[3][0]=-round(((vetorB[3][0]*vetorB[1][1]*vetorB[2][2])+(vetorB[1][0]*vetorB[2][1]*vetorB[3][2])+(vetorB[2][0]*vetorB[3][1]*vetorB[1][2])-(vetorB[3][2]*vetorB[1][1]*vetorB[2][0])-(vetorB[1][2]*vetorB[2][1]*vetorB[3][0])-(vetorB[2][2]*vetorB[3][1]*vetorB[1][0]))/DeterminanteB,2)
-                matriz_inversa[0][1]=-round(((vetorB[3][1]*vetorB[0][2]*vetorB[2][3])+(vetorB[0][1]*vetorB[2][2]*vetorB[3][3])+(vetorB[2][1]*vetorB[3][2]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][2]*vetorB[2][1])-(vetorB[0][3]*vetorB[2][2]*vetorB[3][1])-(vetorB[2][3]*vetorB[3][2]*vetorB[0][1]))/DeterminanteB,2)
-                matriz_inversa[1][1]=round(((vetorB[3][0]*vetorB[0][2]*vetorB[2][3])+(vetorB[0][0]*vetorB[2][2]*vetorB[3][3])+(vetorB[2][0]*vetorB[3][2]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][2]*vetorB[2][0])-(vetorB[0][3]*vetorB[2][2]*vetorB[3][0])-(vetorB[2][3]*vetorB[3][2]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[2][1]=-round(((vetorB[3][0]*vetorB[0][1]*vetorB[2][3])+(vetorB[0][0]*vetorB[2][1]*vetorB[3][3])+(vetorB[2][0]*vetorB[3][1]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][1]*vetorB[2][0])-(vetorB[0][3]*vetorB[2][1]*vetorB[3][0])-(vetorB[2][3]*vetorB[3][1]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[3][1]=round(((vetorB[3][0]*vetorB[0][1]*vetorB[2][2])+(vetorB[0][0]*vetorB[2][1]*vetorB[3][2])+(vetorB[2][0]*vetorB[3][1]*vetorB[0][2])-(vetorB[3][2]*vetorB[0][1]*vetorB[2][0])-(vetorB[0][2]*vetorB[2][1]*vetorB[3][0])-(vetorB[2][2]*vetorB[3][1]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[0][2]=round(((vetorB[3][1]*vetorB[0][2]*vetorB[1][3])+(vetorB[0][1]*vetorB[1][2]*vetorB[3][3])+(vetorB[1][1]*vetorB[3][2]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][2]*vetorB[1][1])-(vetorB[0][3]*vetorB[1][2]*vetorB[3][1])-(vetorB[1][3]*vetorB[3][2]*vetorB[0][1]))/DeterminanteB,2)
-                matriz_inversa[1][2]=-round(((vetorB[3][0]*vetorB[0][2]*vetorB[1][3])+(vetorB[0][0]*vetorB[1][2]*vetorB[3][3])+(vetorB[1][0]*vetorB[3][2]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][2]*vetorB[1][0])-(vetorB[0][3]*vetorB[1][2]*vetorB[3][0])-(vetorB[1][3]*vetorB[3][2]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[2][2]=round(((vetorB[3][0]*vetorB[0][1]*vetorB[1][3])+(vetorB[0][0]*vetorB[1][1]*vetorB[3][3])+(vetorB[1][0]*vetorB[3][1]*vetorB[0][3])-(vetorB[3][3]*vetorB[0][1]*vetorB[1][0])-(vetorB[0][3]*vetorB[1][1]*vetorB[3][0])-(vetorB[1][3]*vetorB[3][1]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[3][2]=-round(((vetorB[3][0]*vetorB[0][1]*vetorB[1][2])+(vetorB[0][0]*vetorB[1][1]*vetorB[3][2])+(vetorB[1][0]*vetorB[3][1]*vetorB[0][2])-(vetorB[3][2]*vetorB[0][1]*vetorB[1][0])-(vetorB[0][2]*vetorB[1][1]*vetorB[3][0])-(vetorB[1][2]*vetorB[3][1]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[0][3]=-round(((vetorB[2][1]*vetorB[0][2]*vetorB[1][3])+(vetorB[0][1]*vetorB[1][2]*vetorB[2][3])+(vetorB[1][1]*vetorB[2][2]*vetorB[0][3])-(vetorB[2][3]*vetorB[0][2]*vetorB[1][1])-(vetorB[0][3]*vetorB[1][2]*vetorB[2][1])-(vetorB[1][3]*vetorB[2][2]*vetorB[0][1]))/DeterminanteB,2)
-                matriz_inversa[1][3]=round(((vetorB[2][0]*vetorB[0][2]*vetorB[1][3])+(vetorB[0][0]*vetorB[1][2]*vetorB[2][3])+(vetorB[1][0]*vetorB[2][2]*vetorB[0][3])-(vetorB[2][3]*vetorB[0][2]*vetorB[1][0])-(vetorB[0][3]*vetorB[1][2]*vetorB[2][0])-(vetorB[1][3]*vetorB[2][2]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[2][3]=-round(((vetorB[2][0]*vetorB[0][1]*vetorB[1][3])+(vetorB[0][0]*vetorB[1][1]*vetorB[2][3])+(vetorB[1][0]*vetorB[2][1]*vetorB[0][3])-(vetorB[2][3]*vetorB[0][1]*vetorB[1][0])-(vetorB[0][3]*vetorB[1][1]*vetorB[2][0])-(vetorB[1][3]*vetorB[2][1]*vetorB[0][0]))/DeterminanteB,2)
-                matriz_inversa[3][3]=round(((vetorB[2][0]*vetorB[0][1]*vetorB[1][2])+(vetorB[0][0]*vetorB[1][1]*vetorB[2][2])+(vetorB[1][0]*vetorB[2][1]*vetorB[0][2])-(vetorB[2][2]*vetorB[0][1]*vetorB[1][0])-(vetorB[0][2]*vetorB[1][1]*vetorB[2][0])-(vetorB[1][2]*vetorB[2][1]*vetorB[0][0]))/DeterminanteB,2)
-            matriz_mudança_base[0][0]= round((matriz_inversa[0][0]*vetorA[0][0]) + (matriz_inversa[0][1]*vetorA[1][0]) + (matriz_inversa[0][2]*vetorA[2][0]) + (matriz_inversa[0][3]*vetorA[3][0]),2)
-            matriz_mudança_base[0][1]= round((matriz_inversa[0][0]*vetorA[0][1]) + (matriz_inversa[0][1]*vetorA[1][1]) + (matriz_inversa[0][2]*vetorA[2][1]) + (matriz_inversa[0][3]*vetorA[3][1]),2)
-            matriz_mudança_base[0][2]= round((matriz_inversa[0][0]*vetorA[0][2]) + (matriz_inversa[0][1]*vetorA[1][2]) + (matriz_inversa[0][2]*vetorA[2][2]) + (matriz_inversa[0][3]*vetorA[3][2]),2)
-            matriz_mudança_base[0][3]= round((matriz_inversa[0][0]*vetorA[0][3]) + (matriz_inversa[0][1]*vetorA[1][3]) + (matriz_inversa[0][2]*vetorA[2][3]) + (matriz_inversa[0][3]*vetorA[3][3]),2)
-            matriz_mudança_base[1][0]= round((matriz_inversa[1][0]*vetorA[0][0]) + (matriz_inversa[1][1]*vetorA[1][0]) + (matriz_inversa[1][2]*vetorA[2][0]) + (matriz_inversa[1][3]*vetorA[3][0]),2)
-            matriz_mudança_base[1][1]= round((matriz_inversa[1][0]*vetorA[0][1]) + (matriz_inversa[1][1]*vetorA[1][1]) + (matriz_inversa[1][2]*vetorA[2][1]) + (matriz_inversa[1][3]*vetorA[3][1]),2)
-            matriz_mudança_base[1][2]= round((matriz_inversa[1][0]*vetorA[0][2]) + (matriz_inversa[1][1]*vetorA[1][2]) + (matriz_inversa[1][2]*vetorA[2][2]) + (matriz_inversa[1][3]*vetorA[3][2]),2)
-            matriz_mudança_base[1][3]= round((matriz_inversa[1][0]*vetorA[0][3]) + (matriz_inversa[1][1]*vetorA[1][3]) + (matriz_inversa[1][2]*vetorA[2][3]) + (matriz_inversa[1][3]*vetorA[3][3]),2)
-            matriz_mudança_base[2][0]= round((matriz_inversa[2][0]*vetorA[0][0]) + (matriz_inversa[2][1]*vetorA[1][0]) + (matriz_inversa[2][2]*vetorA[2][0]) + (matriz_inversa[2][3]*vetorA[3][0]),2)    
-            matriz_mudança_base[2][1]= round((matriz_inversa[2][0]*vetorA[0][1]) + (matriz_inversa[2][1]*vetorA[1][1]) + (matriz_inversa[2][2]*vetorA[2][1]) + (matriz_inversa[2][3]*vetorA[3][1]),2)    
-            matriz_mudança_base[2][2]= round((matriz_inversa[2][0]*vetorA[0][2]) + (matriz_inversa[2][1]*vetorA[1][2]) + (matriz_inversa[2][2]*vetorA[2][2]) + (matriz_inversa[2][3]*vetorA[3][2]),2)
-            matriz_mudança_base[2][3]= round((matriz_inversa[2][0]*vetorA[0][3]) + (matriz_inversa[2][1]*vetorA[1][3]) + (matriz_inversa[2][2]*vetorA[2][3]) + (matriz_inversa[2][3]*vetorA[3][3]),2)
-            matriz_mudança_base[3][0]= round((matriz_inversa[3][0]*vetorA[0][0]) + (matriz_inversa[3][1]*vetorA[1][0]) + (matriz_inversa[3][2]*vetorA[2][0]) + (matriz_inversa[3][3]*vetorA[3][0]),2)
-            matriz_mudança_base[3][1]= round((matriz_inversa[3][0]*vetorA[0][1]) + (matriz_inversa[3][1]*vetorA[1][1]) + (matriz_inversa[3][2]*vetorA[2][1]) + (matriz_inversa[3][3]*vetorA[3][1]),2)
-            matriz_mudança_base[3][2]= round((matriz_inversa[3][0]*vetorA[0][2]) + (matriz_inversa[3][1]*vetorA[1][2]) + (matriz_inversa[3][2]*vetorA[2][2]) + (matriz_inversa[3][3]*vetorA[3][2]),2)  
-            matriz_mudança_base[3][3]= round((matriz_inversa[3][0]*vetorA[0][3]) + (matriz_inversa[3][1]*vetorA[1][3]) + (matriz_inversa[3][2]*vetorA[2][3]) + (matriz_inversa[3][3]*vetorA[3][3]),2)
-
-
-        print(vetorA)
-        print(vetorB)
-        print(matriz_inversa)
-        print(matriz_mudança_base)
+                    a=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base A: ")))
+                    vetorA[i].append(a)
+                    b=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base B: ")))
+                    vetorB[i].append(b)
+                    print("***")          
+            if Rn == 1: 
+                if vetorB[0][0]>=0:
+                    matriz_inversa[0][0]=round((1/vetorB[0][0]))
+                else:
+                    matriz_inversa[0][0]=round((-1/vetorB[0][0]))
+                    matriz_mudança_base[0][0]=(matriz_inversa[0][0]*vetorA[0][0])
+                    print(f"O vetor A equivale a\n|{vetorA[0][0]}|")
+                    print(f"O vetor B equivale a\n|{vetorB[0][0]}|")
+                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]}|")
+                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]}|")
+            elif Rn == 2:
+                DeterminanteA=Determinante2x2(vetorA,DeterminanteA)
+                DeterminanteB=Determinante2x2(vetorB,DeterminanteB)
+                if (DeterminanteA or DeterminanteB)==0:
+                    print("Algum dos dois vetores não é uma base linear")
+                else:    
+                    matriz_inversa=MatrizInversa2x2(matriz_inversa,vetorB,DeterminanteB)
+                    for i in range (2):
+                        for j in range(2):
+                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]),2)
+                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]}|\n|{vetorA[1][0]} {vetorA[1][1]}|")
+                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]}|\n|{vetorB[1][0]} {vetorB[1][1]}|")
+                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]}|")
+                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]}|")
+            elif Rn == 3:
+                DeterminanteA=Determinante3x3(vetorA,DeterminanteA)
+                DeterminanteB=Determinante3x3(vetorB,DeterminanteB)
+                if (DeterminanteA or DeterminanteB)==0:
+                    print("Algum dos dois vetores não é uma base linear")
+                else:
+                    matriz_inversa = MatrizInversa3x3(matriz_inversa,vetorB,DeterminanteB)
+                    for i in range (3):
+                        for j in range(3):
+                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]),2)
+                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]}|")
+                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]}|")
+                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]}|")
+                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]}|")   
+            elif Rn == 4:
+                DeterminanteA = Determinante4x4(vetorA,DeterminanteA)
+                DeterminanteB = Determinante4x4(vetorB,DeterminanteB)
+                if (DeterminanteA or DeterminanteB)==0:
+                    print("Algum dos dois vetores não é uma base linear")
+                else:
+                    matriz_inversa=MatrizInversa4x4(matriz_inversa,vetorB,DeterminanteB)
+                    for i in range (4):
+                        for j in range(4):
+                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]) + (matriz_inversa[i][3]*vetorA[3][j]),2)
+                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]} {vetorA[0][3]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]} {vetorA[1][3]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]} {vetorA[2][3]}|\n|{vetorA[3][0]} {vetorA[3][1]} {vetorA[3][2]} {vetorA[3][3]}|")
+                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]} {vetorB[0][3]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]} {vetorB[1][3]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]} {vetorB[2][3]}|\n|{vetorB[3][0]} {vetorB[3][1]} {vetorB[3][2]} {vetorB[3][3]}|")
+                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]} {matriz_inversa[0][3]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]} {matriz_inversa[1][3]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]} {matriz_inversa[2][3]}|\n|{matriz_inversa[3][0]} {matriz_inversa[3][1]} {matriz_inversa[3][2]} {matriz_inversa[3][3]}|")
+                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]} {matriz_mudança_base[0][3]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]} {matriz_mudança_base[1][3]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]} {matriz_mudança_base[2][3]}|\n|{matriz_mudança_base[3][0]} {matriz_mudança_base[3][1]} {matriz_mudança_base[3][2]} {matriz_mudança_base[3][3]}|")  
+        print("-"*20)
     else:
         print("Comando inválido")
-        print("-"*20)    
+        print("-"*20)
