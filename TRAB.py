@@ -81,7 +81,8 @@ while Menu!=4:
     x=0
     Determinante=0
     DeterminanteA=0
-    DeterminanteB=0        
+    DeterminanteB=0
+    import random        
     if Menu==4:
         print("Programa encerrado")
         print("-"*20)
@@ -95,28 +96,27 @@ while Menu!=4:
                 print("Comando inválido")
                 print("-"*20)  
         if Random==1:
-            import random
             tamanho=random.randint(1,4)
             if tamanho==1:
-                ale=random.randint(0,100)
+                ale=random.randint(-20,20)
                 matriz1.append(ale)
                 matriz=matriz1
             elif tamanho==2:
                 for i in range(2):
                     for j in range(2):
-                        ale=random.randint(0,100)
+                        ale=random.randint(-20,20)
                         matriz2[i].append(ale)
                 matriz=matriz2
             elif tamanho==3:
                 for i in range(3):
                     for j in range(3):
-                        ale=random.randint(0,100)
+                        ale=random.randint(-20,20)
                         matriz3[i].append(ale)
                 matriz=matriz3
             elif tamanho==4:
                 for i in range(4):
                     for j in range(4):
-                        ale=random.randint(0,100)
+                        ale=random.randint(-20,20)
                         matriz4[i].append(ale)
                 matriz=matriz4 
         elif Random==2:
@@ -188,74 +188,89 @@ while Menu!=4:
                         print(matrizinversa[i])
                     print("-"*20)
     elif Menu==2:
-        while x==0:          
-            Rn=(int(input("Digite o valor de n do Rn: ")))
+        while x==0:
+            Random=int(input("1.Base aleatória\n2.Base escrita manualmente\nDigite qual opção você deseja: "))
             print("-"*20)
-            if Rn>=1 and Rn<=4:
+            if Random==1 or Random==2:
                 x=1
             else:
-                print("Valor inválido")
-                print("-"*20)              
-        else:
+                print("Comando inválido")
+        if Random==1:
+            Rn=random.randint(1,4)
             for i in range(0,Rn):
                 for j in range(0,Rn):
-                    a=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base A: ")))
+                    a=random.randint(-20,20)
                     vetorA[i].append(a)
-                    b=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base B: ")))
-                    vetorB[i].append(b)
-                    print("***")          
-            if Rn == 1: 
-                if vetorB[0][0]>=0:
-                    matriz_inversa[0][0]=round((1/vetorB[0][0]))
+                    b=random.randint(-20,20)
+                    vetorB[i].append(b)     
+        elif Random==2:
+            while x==1:          
+                Rn=(int(input("Digite o valor de n do Rn: ")))
+                print("-"*20)
+                if Rn>=1 and Rn<=4:
+                    x=0
                 else:
-                    matriz_inversa[0][0]=round((-1/vetorB[0][0]))
-                    matriz_mudança_base[0][0]=(matriz_inversa[0][0]*vetorA[0][0])
-                    print(f"O vetor A equivale a\n|{vetorA[0][0]}|")
-                    print(f"O vetor B equivale a\n|{vetorB[0][0]}|")
-                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]}|")
-                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]}|")
-            elif Rn == 2:
-                DeterminanteA=Determinante2x2(vetorA,DeterminanteA)
-                DeterminanteB=Determinante2x2(vetorB,DeterminanteB)
-                if (DeterminanteA or DeterminanteB)==0:
-                    print("Algum dos dois vetores não é uma base linear")
-                else:    
-                    matriz_inversa=MatrizInversa2x2(matriz_inversa,vetorB,DeterminanteB)
-                    for i in range (2):
-                        for j in range(2):
-                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]),2)
-                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]}|\n|{vetorA[1][0]} {vetorA[1][1]}|")
-                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]}|\n|{vetorB[1][0]} {vetorB[1][1]}|")
-                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]}|")
-                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]}|")
-            elif Rn == 3:
-                DeterminanteA=Determinante3x3(vetorA,DeterminanteA)
-                DeterminanteB=Determinante3x3(vetorB,DeterminanteB)
-                if (DeterminanteA or DeterminanteB)==0:
-                    print("Algum dos dois vetores não é uma base linear")
-                else:
-                    matriz_inversa = MatrizInversa3x3(matriz_inversa,vetorB,DeterminanteB)
-                    for i in range (3):
-                        for j in range(3):
-                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]),2)
-                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]}|")
-                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]}|")
-                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]}|")
-                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]}|")   
-            elif Rn == 4:
-                DeterminanteA = Determinante4x4(vetorA,DeterminanteA)
-                DeterminanteB = Determinante4x4(vetorB,DeterminanteB)
-                if (DeterminanteA or DeterminanteB)==0:
-                    print("Algum dos dois vetores não é uma base linear")
-                else:
-                    matriz_inversa=MatrizInversa4x4(matriz_inversa,vetorB,DeterminanteB)
-                    for i in range (4):
-                        for j in range(4):
-                            matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]) + (matriz_inversa[i][3]*vetorA[3][j]),2)
-                    print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]} {vetorA[0][3]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]} {vetorA[1][3]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]} {vetorA[2][3]}|\n|{vetorA[3][0]} {vetorA[3][1]} {vetorA[3][2]} {vetorA[3][3]}|")
-                    print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]} {vetorB[0][3]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]} {vetorB[1][3]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]} {vetorB[2][3]}|\n|{vetorB[3][0]} {vetorB[3][1]} {vetorB[3][2]} {vetorB[3][3]}|")
-                    print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]} {matriz_inversa[0][3]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]} {matriz_inversa[1][3]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]} {matriz_inversa[2][3]}|\n|{matriz_inversa[3][0]} {matriz_inversa[3][1]} {matriz_inversa[3][2]} {matriz_inversa[3][3]}|")
-                    print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]} {matriz_mudança_base[0][3]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]} {matriz_mudança_base[1][3]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]} {matriz_mudança_base[2][3]}|\n|{matriz_mudança_base[3][0]} {matriz_mudança_base[3][1]} {matriz_mudança_base[3][2]} {matriz_mudança_base[3][3]}|")  
+                    print("Valor inválido")
+                    print("-"*20)              
+                for i in range(0,Rn):
+                    for j in range(0,Rn):
+                        a=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base A: ")))
+                        vetorA[i].append(a)
+                        b=(int(input(f"Digite o valor da {i+1}ª linha e {j+1}ª coluna da base B: ")))
+                        vetorB[i].append(b)
+                        print("***")          
+        if Rn == 1: 
+            if vetorB[0][0]>=0:
+                matriz_inversa[0][0]=round((1/vetorB[0][0]))
+            else:
+                matriz_inversa[0][0]=round((-1/vetorB[0][0]))
+            matriz_mudança_base[0][0]=(matriz_inversa[0][0]*vetorA[0][0])
+            print(f"O vetor A equivale a\n|{vetorA[0][0]}|")
+            print(f"O vetor B equivale a\n|{vetorB[0][0]}|")
+            print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]}|")
+            print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]}|")
+        elif Rn == 2:
+            DeterminanteA=Determinante2x2(vetorA,DeterminanteA)
+            DeterminanteB=Determinante2x2(vetorB,DeterminanteB)
+            if (DeterminanteA or DeterminanteB)==0:
+                print("Algum dos dois vetores não é uma base linear")
+            else:    
+                matriz_inversa=MatrizInversa2x2(matriz_inversa,vetorB,DeterminanteB)
+                for i in range (2):
+                    for j in range(2):
+                        matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]),2)
+                print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]}|\n|{vetorA[1][0]} {vetorA[1][1]}|")
+                print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]}|\n|{vetorB[1][0]} {vetorB[1][1]}|")
+                print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]}|")
+                print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]}|")
+        elif Rn == 3:
+            DeterminanteA=Determinante3x3(vetorA,DeterminanteA)
+            DeterminanteB=Determinante3x3(vetorB,DeterminanteB)
+            if (DeterminanteA or DeterminanteB)==0:
+                print("Algum dos dois vetores não é uma base linear")
+            else:
+                matriz_inversa = MatrizInversa3x3(matriz_inversa,vetorB,DeterminanteB)
+                for i in range (3):
+                    for j in range(3):
+                        matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]),2)
+                print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]}|")
+                print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]}|")
+                print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]}|")
+                print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]}|")   
+        elif Rn == 4:
+            DeterminanteA = Determinante4x4(vetorA,DeterminanteA)
+            DeterminanteB = Determinante4x4(vetorB,DeterminanteB)
+            if (DeterminanteA or DeterminanteB)==0:
+                print("Algum dos dois vetores não é uma base linear")
+            else:
+                matriz_inversa=MatrizInversa4x4(matriz_inversa,vetorB,DeterminanteB)
+                for i in range (4):
+                    for j in range(4):
+                        matriz_mudança_base[i][j]=round((matriz_inversa[i][0]*vetorA[0][j]) + (matriz_inversa[i][1]*vetorA[1][j]) + (matriz_inversa[i][2]*vetorA[2][j]) + (matriz_inversa[i][3]*vetorA[3][j]),2)
+                print(f"O vetor A equivale a\n|{vetorA[0][0]} {vetorA[0][1]} {vetorA[0][2]} {vetorA[0][3]}|\n|{vetorA[1][0]} {vetorA[1][1]} {vetorA[1][2]} {vetorA[1][3]}|\n|{vetorA[2][0]} {vetorA[2][1]} {vetorA[2][2]} {vetorA[2][3]}|\n|{vetorA[3][0]} {vetorA[3][1]} {vetorA[3][2]} {vetorA[3][3]}|")
+                print(f"O vetor B equivale a\n|{vetorB[0][0]} {vetorB[0][1]} {vetorB[0][2]} {vetorB[0][3]}|\n|{vetorB[1][0]} {vetorB[1][1]} {vetorB[1][2]} {vetorB[1][3]}|\n|{vetorB[2][0]} {vetorB[2][1]} {vetorB[2][2]} {vetorB[2][3]}|\n|{vetorB[3][0]} {vetorB[3][1]} {vetorB[3][2]} {vetorB[3][3]}|")
+                print(f"A matriz inversa 1x1 equivale a\n|{matriz_inversa[0][0]} {matriz_inversa[0][1]} {matriz_inversa[0][2]} {matriz_inversa[0][3]}|\n|{matriz_inversa[1][0]} {matriz_inversa[1][1]} {matriz_inversa[1][2]} {matriz_inversa[1][3]}|\n|{matriz_inversa[2][0]} {matriz_inversa[2][1]} {matriz_inversa[2][2]} {matriz_inversa[2][3]}|\n|{matriz_inversa[3][0]} {matriz_inversa[3][1]} {matriz_inversa[3][2]} {matriz_inversa[3][3]}|")
+                print(f"A matriz mudança de base 1x1 equivale a\n|{matriz_mudança_base[0][0]} {matriz_mudança_base[0][1]} {matriz_mudança_base[0][2]} {matriz_mudança_base[0][3]}|\n|{matriz_mudança_base[1][0]} {matriz_mudança_base[1][1]} {matriz_mudança_base[1][2]} {matriz_mudança_base[1][3]}|\n|{matriz_mudança_base[2][0]} {matriz_mudança_base[2][1]} {matriz_mudança_base[2][2]} {matriz_mudança_base[2][3]}|\n|{matriz_mudança_base[3][0]} {matriz_mudança_base[3][1]} {matriz_mudança_base[3][2]} {matriz_mudança_base[3][3]}|")  
         print("-"*20)
     else:
         print("Comando inválido")
